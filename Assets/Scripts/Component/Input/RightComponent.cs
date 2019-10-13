@@ -1,7 +1,9 @@
-namespace BallRunner.Component.Input
+using Entitas;
+
+[Input] 
+public sealed class RightComponent : IComponent
 {
-    public class RightComponent
-    {
-        
-    }
+    public bool isUp;
+    public bool isDown;
+    public bool isPressed;
 }

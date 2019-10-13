@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class MovingStepsOfPathComponent : IComponent
 {
-    public class MovingStepsOfPathComponent
-    {
-        
-    }
+     public int value;
 }

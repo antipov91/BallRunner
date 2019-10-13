@@ -1,7 +1,8 @@
-namespace Assets.Scripts.Component.Game
+using Entitas;
+using UnityEngine;
+
+[Game]
+public sealed class RotationComponent : IComponent
 {
-    public class RotationComponent
-    {
-        
-    }
+    public Vector3 value;
 }

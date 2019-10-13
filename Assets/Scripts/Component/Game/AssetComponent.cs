@@ -1,7 +1,7 @@
-namespace Assets.Scripts.Component.Game
+using Entitas;
+
+[Game]
+public sealed class AssetComponent : IComponent
 {
-    public class AssetComponent
-    {
-        
-    }
+     public string value;
 }

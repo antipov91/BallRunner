@@ -1,7 +1,8 @@
-namespace BallRunner.Component.Game
+using Entitas;
+using UnityEngine;
+
+[Game]
+public sealed class BoardComponent : IComponent
 {
-    public class BoardComponent
-    {
-        
-    }
+    public BoardType value;
 }

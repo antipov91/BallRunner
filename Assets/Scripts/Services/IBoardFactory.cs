@@ -1,7 +1,7 @@
 namespace BallRunner.Services
 {
-    public interface IBoardService
+    public interface IBoardFactory
     {
-        GameEntity CreateBoard(BoardType type);
+        GameEntity CreateBoard(Contexts contexts, BoardType type);
     }
 }

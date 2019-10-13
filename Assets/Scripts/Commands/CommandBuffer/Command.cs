@@ -1,9 +1,23 @@
 namespace BallRunner.Commands
 {
-    public interface ICommand
+    public abstract class Command
     {
-        void Initialize();
-        void Execute();
-        void Release();
+        public bool IsComplete { get; protected set; }
+
+        public Command()
+        {
+            IsComplete = false;
+        }
+        
+        public virtual void Initialize()
+        {
+            
+        }
+        public abstract void Execute();
+
+        public virtual void Release()
+        {
+            
+        }
     }
 }

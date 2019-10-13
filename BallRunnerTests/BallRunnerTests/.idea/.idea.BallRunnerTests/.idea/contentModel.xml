@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Vladimir\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Vladimir\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_BallRunnerTests.559765618.00" t="ExcludeRecursive" />
+    <e p="D:\Unity\BallRunner" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Generated" t="Include">
+          <e p="Contexts.cs" t="Include" />
+          <e p="Feature.cs" t="Include" />
+          <e p="Game" t="Include">
+            <e p="Components" t="Include">
+              <e p="GameAngularVelocityComponent.cs" t="Include" />
+              <e p="GameAroundRotationComponent.cs" t="Include" />
+              <e p="GameAssetComponent.cs" t="Include" />
+              <e p="GameBallComponent.cs" t="Include" />
+              <e p="GameBoardComponent.cs" t="Include" />
+              <e p="GameBoardIdComponent.cs" t="Include" />
+              <e p="GameCameraComponent.cs" t="Include" />
+              <e p="GameCollisionComponent.cs" t="Include" />
+              <e p="GameCommandBufferComponent.cs" t="Include" />
+              <e p="GameCountBoardsComponent.cs" t="Include" />
+              <e p="GameDelayComponent.cs" t="Include" />
+              <e p="GameDestroyedComponent.cs" t="Include" />
+              <e p="GameDirectionComponent.cs" t="Include" />
+              <e p="GameDirectPathDelayComponent.cs" t="Include" />
+              <e p="GameFirstBoardIdComponent.cs" t="Include" />
+              <e p="GameLastBoardIdComponent.cs" t="Include" />
+              <e p="GameLinearVelocityComponent.cs" t="Include" />
+              <e p="GameMonoViewComponent.cs" t="Include" />
+              <e p="GameMoveCompleteComponent.cs" t="Include" />
+              <e p="GameMovementDelayComponent.cs" t="Include" />
+              <e p="GameMoverComponent.cs" t="Include" />
+              <e p="GameMovingStepsOfPathComponent.cs" t="Include" />
+              <e p="GameNextBoardIdComponent.cs" t="Include" />
+              <e p="GamePathCreatorComponent.cs" t="Include" />
+              <e p="GamePathPositionComponent.cs" t="Include" />
+              <e p="GamePathRotationComponent.cs" t="Include" />
+              <e p="GamePositionComponent.cs" t="Include" />
+              <e p="GamePushBoardsComponent.cs" t="Include" />
+              <e p="GameRotationComponent.cs" t="Include" />
+              <e p="GameSyncTransformComponent.cs" t="Include" />
+              <e p="GameTransformViewComponent.cs" t="Include" />
+            </e>
+            <e p="GameAttribute.cs" t="Include" />
+            <e p="GameComponentsLookup.cs" t="Include" />
+            <e p="GameContext.cs" t="Include" />
+            <e p="GameEntity.cs" t="Include" />
+            <e p="GameMatcher.cs" t="Include" />
+          </e>
+          <e p="Input" t="Include">
+            <e p="Components" t="Include">
+              <e p="InputInputComponent.cs" t="Include" />
+              <e p="InputJumpComponent.cs" t="Include" />
+              <e p="InputLeftComponent.cs" t="Include" />
+              <e p="InputRightComponent.cs" t="Include" />
+            </e>
+            <e p="InputAttribute.cs" t="Include" />
+            <e p="InputComponentsLookup.cs" t="Include" />
+            <e p="InputContext.cs" t="Include" />
+            <e p="InputEntity.cs" t="Include" />
+            <e p="InputMatcher.cs" t="Include" />
+          </e>
+          <e p="Meta" t="Include">
+            <e p="Components" t="Include">
+              <e p="MetaConfigsComponent.cs" t="Include" />
+              <e p="MetaPathConfigComponent.cs" t="Include" />
+            </e>
+            <e p="MetaAttribute.cs" t="Include" />
+            <e p="MetaComponentsLookup.cs" t="Include" />
+            <e p="MetaContext.cs" t="Include" />
+            <e p="MetaEntity.cs" t="Include" />
+            <e p="MetaMatcher.cs" t="Include" />
+          </e>
+          <e p="Time" t="Include">
+            <e p="Components" t="Include">
+              <e p="TimeDeltaTimeComponent.cs" t="Include" />
+            </e>
+            <e p="TimeAttribute.cs" t="Include" />
+            <e p="TimeComponentsLookup.cs" t="Include" />
+            <e p="TimeContext.cs" t="Include" />
+            <e p="TimeEntity.cs" t="Include" />
+            <e p="TimeMatcher.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Libraries" t="Include">
+          <e p="DesperateDevs" t="Include">
+            <e p="Compile.cs" t="Include" />
+          </e>
+          <e p="Entitas" t="Include">
+            <e p="Entitas.xml" t="Include" />
+            <e p="LICENSE.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Commands" t="Include">
+            <e p="AroundRotationCommand.cs" t="Include" />
+            <e p="CommandBuffer" t="Include">
+              <e p="Command.cs" t="Include" />
+              <e p="CommandBuffer.cs" t="Include" />
+              <e p="ICommandBuffer.cs" t="Include" />
+            </e>
+            <e p="DelayCommand.cs" t="Include" />
+          </e>
+          <e p="Component" t="Include">
+            <e p="Game" t="Include">
+              <e p="AngularVelocityComponent.cs" t="Include" />
+              <e p="AroundRotationComponent.cs" t="Include" />
+              <e p="AssetComponent.cs" t="Include" />
+              <e p="BallComponent.cs" t="Include" />
+              <e p="BoardComponent.cs" t="Include" />
+              <e p="BoardIdComponent.cs" t="Include" />
+              <e p="CameraComponent.cs" t="Include" />
+              <e p="CollisionComponent.cs" t="Include" />
+              <e p="CommandBufferComponent.cs" t="Include" />
+              <e p="CountBoardsComponent.cs" t="Include" />
+              <e p="DelayComponent.cs" t="Include" />
+              <e p="DestroyedComponent.cs" t="Include" />
+              <e p="DirectionComponent.cs" t="Include" />
+              <e p="DirectPathDelayComponent.cs" t="Include" />
+              <e p="FirstBoardIdComponent.cs" t="Include" />
+              <e p="LastBoardIdComponent.cs" t="Include" />
+              <e p="LinearVelocityComponent.cs" t="Include" />
+              <e p="MonoViewComponent.cs" t="Include" />
+              <e p="MoveCompleteComponent.cs" t="Include" />
+              <e p="MovementDelayComponent.cs" t="Include" />
+              <e p="MoverComponent.cs" t="Include" />
+              <e p="MovingStepsOfPathComponent.cs" t="Include" />
+              <e p="NextBoardIdComponent.cs" t="Include" />
+              <e p="PathCreatorComponent.cs" t="Include" />
+              <e p="PathPositionComponent.cs" t="Include" />
+              <e p="PathRotationComponent.cs" t="Include" />
+              <e p="PositionComponent.cs" t="Include" />
+              <e p="PushBoardsComponent.cs" t="Include" />
+              <e p="RotationComponent.cs" t="Include" />
+              <e p="SyncTransformComponent.cs" t="Include" />
+              <e p="TransformViewComponent.cs" t="Include" />
+            </e>
+            <e p="Input" t="Include">
+              <e p="InputComponent.cs" t="Include" />
+              <e p="JumpComponent.cs" t="Include" />
+              <e p="LeftComponent.cs" t="Include" />
+              <e p="RightComponent.cs" t="Include" />
+            </e>
+            <e p="Meta" t="Include">
+              <e p="ConfigsComponent.cs" t="Include" />
+              <e p="PathConfigComponent.cs" t="Include" />
+            </e>
+            <e p="Time" t="Include">
+              <e p="DeltaTimeComponent.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Configs" t="Include">
+            <e p="PathConfig.cs" t="Include" />
+          </e>
+          <e p="GameController.cs" t="Include" />
+          <e p="MonoViews" t="Include">
+            <e p="CollisionEmmiter.cs" t="Include" />
+            <e p="MonoGameView.cs" t="Include" />
+            <e p="MonoRigidBodyTransformView.cs" t="Include" />
+            <e p="MonoTransformView.cs" t="Include" />
+            <e p="MonoView.cs" t="Include" />
+          </e>
+          <e p="Services" t="Include">
+            <e p="IBoardFactory.cs" t="Include" />
+            <e p="IGameService.cs" t="Include" />
+            <e p="IInputService.cs" t="Include" />
+            <e p="ITimeService.cs" t="Include" />
+            <e p="KeyButton.cs" t="Include" />
+            <e p="UnityGameService.cs" t="Include" />
+            <e p="UnityInputService.cs" t="Include" />
+            <e p="UnityServices.cs" t="Include" />
+            <e p="UnityTimeService.cs" t="Include" />
+            <e p="WoodBoardFactory.cs" t="Include" />
+          </e>
+          <e p="Systems" t="Include">
+            <e p="Game" t="Include">
+              <e p="BallDirectionSystem.cs" t="Include" />
+              <e p="CameraSystem.cs" t="Include" />
+              <e p="CommandExecutionSystem.cs" t="Include" />
+              <e p="DestroyedSystem.cs" t="Include" />
+              <e p="GameSystems.cs" t="Include" />
+              <e p="InstantiateSystem.cs" t="Include" />
+              <e p="MoveSystem.cs" t="Include" />
+              <e p="PathBuildingSystem.cs" t="Include" />
+              <e p="PathControlSystem.cs" t="Include" />
+              <e p="PathRemoveSystem.cs" t="Include" />
+              <e p="PathRotationSystem.cs" t="Include" />
+              <e p="PositionUpdateSystem.cs" t="Include" />
+              <e p="RotationAroundSystem.cs" t="Include" />
+              <e p="RotationUpdateSystem.cs" t="Include" />
+              <e p="SceneInitializationSystem.cs" t="Include" />
+              <e p="SyncTransformSystem.cs" t="Include" />
+            </e>
+            <e p="Input" t="Include">
+              <e p="InputSystem.cs" t="Include" />
+              <e p="InputSystems.cs" t="Include" />
+            </e>
+            <e p="Meta" t="Include">
+              <e p="ConfigsInitializationSystem.cs" t="Include" />
+              <e p="MetaSystems.cs" t="Include" />
+            </e>
+            <e p="Time" t="Include">
+              <e p="TimeSystem.cs" t="Include" />
+              <e p="TimeSystems.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Views" t="Include">
+            <e p="IMonoView.cs" t="Include" />
+            <e p="ITransformView.cs" t="Include" />
+            <e p="IView.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="BallRunnerTests\BallRunnerTests" t="IncludeFlat">
+        <e p="BallRunnerTests" t="IncludeRecursive">
+          <e p="App.config" t="Include" />
+          <e p="BallRunnerTests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Libraries" t="Include">
+            <e p="NSpec.dll" t="Include" />
+            <e p="NSpecRunner.dll" t="Include" />
+            <e p="nunit.framework.dll" t="Include" />
+            <e p="UnityEditor.dll" t="Include" />
+            <e p="UnityEngine.dll" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="packages.config" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+          <e p="TestRunner.cs" t="Include" />
+          <e p="Tests" t="Include">
+            <e p="Game" t="Include">
+              <e p="describe_CommandExecutionSystem.cs" t="Include" />
+              <e p="describe_DestroyedSystem.cs" t="Include" />
+              <e p="describe_InstantiateSystem.cs" t="Include" />
+              <e p="describe_PathBuildingSystem.cs" t="Include" />
+              <e p="describe_PathRemoveSystem.cs" t="Include" />
+              <e p="describe_PositionUpdateSystem.cs" t="Include" />
+              <e p="describe_RotationAroundSystem.cs" t="Include" />
+              <e p="describe_RotationUpdateSystem.cs" t="Include" />
+              <e p="describe_SyncTransformSystem.cs" t="Include" />
+            </e>
+            <e p="Input" t="Include">
+              <e p="describe_InputSystem.cs" t="Include" />
+            </e>
+            <e p="Meta" t="Include">
+              <e p="describe_ConfigsInitializationSystem.cs" t="Include" />
+            </e>
+            <e p="Time" t="Include">
+              <e p="describe_TimeSystem.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="BallRunnerTests.sln" t="IncludeFlat" />
+        <e p="packages" t="ExcludeRecursive" />
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

@@ -1,7 +1,9 @@
-namespace BallRunner.Component.Meta
+using Entitas;
+using Entitas.CodeGeneration.Attributes;
+
+[Meta]
+[Unique]
+public sealed class ConfigsComponent : IComponent
 {
-    public class ConfigsComponent
-    {
         
-    }
 }

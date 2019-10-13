@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class MovementDelayComponent : IComponent
 {
-    public class MovementDelayComponent
-    {
-        
-    }
+    public float value;
 }

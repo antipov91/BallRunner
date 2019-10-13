@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class CollisionComponent : IComponent
 {
-    public class CollisionComponent
-    {
-        
-    }
+     public GameEntity targetInstance;
 }

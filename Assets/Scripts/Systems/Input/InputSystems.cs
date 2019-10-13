@@ -1,7 +1,12 @@
-namespace BallRunner.GameSystems
+using BallRunner.Services;
+
+namespace BallRunner.Systems
 {
-    public class InputSystems
+    public class InputSystems : Feature
     {
-        
+        public InputSystems(Contexts contexts, UnityServices services)
+        {
+            Add(new InputSystem(contexts, services.InputService));
+        }
     }
 }

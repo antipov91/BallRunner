@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class CameraComponent : IComponent
 {
-    public class CameraComponent
-    {
         
-    }
 }

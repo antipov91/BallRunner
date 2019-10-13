@@ -1,7 +1,9 @@
-namespace BallRunner.Component.Meta
+using BallRunner.Configs;
+using Entitas;
+using Entitas.CodeGeneration.Attributes;
+
+[Meta]
+public sealed class PathConfigComponent : IComponent
 {
-    public class PathConfigComponent
-    {
-        
-    }
+    public PathConfig instance;
 }

@@ -1,7 +1,9 @@
-namespace BallRunner.Commands.CommandBuffer
+namespace BallRunner.Commands
 {
     public interface ICommandBuffer
     {
-        
+        void Add(Command command);
+        void Execute();
+        bool IsEmpty();
     }
 }

@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class DirectPathDelayComponent : IComponent
 {
-    public class DirectPathDelayComponent
-    {
-        
-    }
+     public int value;
 }

@@ -1,7 +1,8 @@
-namespace Assets.Scripts.Component.Game
+using BallRunner.Views;
+using Entitas;
+
+[Game]
+public sealed class TransformViewComponent : IComponent
 {
-    public class TransformViewComponent
-    {
-        
-    }
+    public ITransformView instance;
 }

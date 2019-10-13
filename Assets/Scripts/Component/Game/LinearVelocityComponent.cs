@@ -1,7 +1,8 @@
-namespace BallRunner.Component.Game
+using Entitas;
+using UnityEngine;
+
+[Game]
+public sealed class LinearVelocityComponent : IComponent
 {
-    public class LinearVelocityComponent
-    {
-        
-    }
+     public float value;
 }

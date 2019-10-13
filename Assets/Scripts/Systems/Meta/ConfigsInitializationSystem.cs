@@ -3,11 +3,11 @@ using Entitas;
 
 namespace BallRunner.Systems
 {
-    public class ConfigInitializationSystem : IInitializeSystem
+    public class ConfigsInitializationSystem : IInitializeSystem
     {
         private readonly Contexts contexts;
 
-        public ConfigInitializationSystem(Contexts contexts)
+        public ConfigsInitializationSystem(Contexts contexts)
         {
             this.contexts = contexts;
         }

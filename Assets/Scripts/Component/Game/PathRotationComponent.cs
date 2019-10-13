@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class PathRotationComponent : IComponent
 {
-    public class PathRotationComponent
-    {
-        
-    }
+     public float value;
 }

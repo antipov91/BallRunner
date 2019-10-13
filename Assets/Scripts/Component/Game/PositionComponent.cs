@@ -1,7 +1,8 @@
-namespace Assets.Scripts.Component.Game
+using  Entitas;
+using UnityEngine;
+
+[Game]
+public sealed class PositionComponent : IComponent
 {
-    public class PositionComponent
-    {
-        
-    }
+     public Vector3 value;
 }

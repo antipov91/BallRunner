@@ -1,8 +1,8 @@
 using BallRunner.Views;
-using  Entitas;
+using Entitas;
 
 [Game]
-public sealed class ViewComponent : IComponent
+public sealed class MonoViewComponent : IComponent
 {
-     public IView instance;
+     public IMonoView instance;
 }

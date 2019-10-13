@@ -1,7 +1,9 @@
-namespace Assets.Scripts.Component.Input
+using Entitas;
+using Entitas.CodeGeneration.Attributes;
+
+[Input]
+[Unique]
+public sealed class InputComponent : IComponent
 {
-    public class InputComponent
-    {
         
-    }
 }

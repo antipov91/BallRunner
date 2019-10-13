@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Vladimir\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Vladimir\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_BallRunner.667274345.00" t="ExcludeRecursive" />
+    <e p="D:\Unity\BallRunner" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Libraries" t="Include">
+          <e p="DesperateDevs" t="Include">
+            <e p="Compile.cs" t="Include" />
+          </e>
+          <e p="Entitas" t="Include">
+            <e p="Entitas.xml" t="Include" />
+            <e p="LICENSE.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="BallRunner.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

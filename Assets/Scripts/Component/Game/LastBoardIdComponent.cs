@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class LastBoardIdComponent : IComponent
 {
-    public class LastBoardIdComponent
-    {
-        
-    }
+    public int value;
 }

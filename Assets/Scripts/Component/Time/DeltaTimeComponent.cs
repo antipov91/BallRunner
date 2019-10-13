@@ -1,7 +1,9 @@
-namespace BallRunner.Component.Time
+using Entitas;
+using Entitas.CodeGeneration.Attributes;
+
+[Time]
+[Unique]
+public sealed class DeltaTimeComponent : IComponent
 {
-    public class DeltaTimeComponent
-    {
-        
-    }
+    public float value;
 }

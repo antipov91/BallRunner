@@ -1,6 +1,6 @@
 namespace BallRunner.Views
 {
-    public class MonoGameView
+    public class MonoGameView : MonoView<GameEntity>
     {
         
     }

@@ -1,7 +1,8 @@
-namespace BallRunner.Component.Game
+using BallRunner.Commands;
+using Entitas;
+
+[Game]
+public sealed class CommandBufferComponent : IComponent
 {
-    public class CommandBufferComponent
-    {
-        
-    }
+    public ICommandBuffer instance;
 }

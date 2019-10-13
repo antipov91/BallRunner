@@ -1,7 +1,7 @@
 using Entitas;
 
 [Game]
-public sealed class FirstIdBoardComponent : IComponent
+public sealed class FirstBoardIdComponent : IComponent
 {
     public int value;
 }

@@ -1,7 +1,9 @@
-namespace BallRunner.Component.Input
+using Entitas;
+
+[Input]
+public sealed class JumpComponent : IComponent
 {
-    public class JumpComponent
-    {
-        
-    }
+     public bool isUp;
+     public bool isDown;
+     public bool isPressed;
 }

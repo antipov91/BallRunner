@@ -1,7 +1,7 @@
-namespace BallRunner.Component.Game
+using Entitas;
+
+[Game]
+public sealed class CountBoardsComponent : IComponent
 {
-    public class CountBoardsComponent
-    {
-        
-    }
+     public int value;
 }
