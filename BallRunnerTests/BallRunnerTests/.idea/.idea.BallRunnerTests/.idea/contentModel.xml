@@ -8,37 +8,51 @@
       <e p="Assets" t="Include">
         <e p="Generated" t="Include">
           <e p="Contexts.cs" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Components" t="Include">
+              <e p="DirectionListenerComponent.cs" t="Include" />
+              <e p="LinearVelocityListenerComponent.cs" t="Include" />
+            </e>
+            <e p="GameEventSystems.cs" t="Include" />
+            <e p="Interfaces" t="Include">
+              <e p="IDirectionListener.cs" t="Include" />
+              <e p="ILinearVelocityListener.cs" t="Include" />
+            </e>
+            <e p="Systems" t="Include">
+              <e p="DirectionEventSystem.cs" t="Include" />
+              <e p="LinearVelocityEventSystem.cs" t="Include" />
+            </e>
+          </e>
           <e p="Feature.cs" t="Include" />
           <e p="Game" t="Include">
             <e p="Components" t="Include">
               <e p="GameAngularVelocityComponent.cs" t="Include" />
               <e p="GameAroundRotationComponent.cs" t="Include" />
+              <e p="GameAroundRotationEmitterComponent.cs" t="Include" />
               <e p="GameAssetComponent.cs" t="Include" />
               <e p="GameBallComponent.cs" t="Include" />
               <e p="GameBoardComponent.cs" t="Include" />
               <e p="GameBoardIdComponent.cs" t="Include" />
-              <e p="GameCameraComponent.cs" t="Include" />
+              <e p="GameBoardViewComponent.cs" t="Include" />
               <e p="GameCollisionComponent.cs" t="Include" />
               <e p="GameCommandBufferComponent.cs" t="Include" />
               <e p="GameCountBoardsComponent.cs" t="Include" />
-              <e p="GameDelayComponent.cs" t="Include" />
               <e p="GameDestroyedComponent.cs" t="Include" />
               <e p="GameDirectionComponent.cs" t="Include" />
+              <e p="GameDirectionListenerComponent.cs" t="Include" />
               <e p="GameDirectPathDelayComponent.cs" t="Include" />
               <e p="GameFirstBoardIdComponent.cs" t="Include" />
               <e p="GameLastBoardIdComponent.cs" t="Include" />
               <e p="GameLinearVelocityComponent.cs" t="Include" />
+              <e p="GameLinearVelocityListenerComponent.cs" t="Include" />
+              <e p="GameLocalRotationComponent.cs" t="Include" />
               <e p="GameMonoViewComponent.cs" t="Include" />
-              <e p="GameMoveCompleteComponent.cs" t="Include" />
-              <e p="GameMovementDelayComponent.cs" t="Include" />
-              <e p="GameMoverComponent.cs" t="Include" />
-              <e p="GameMovingStepsOfPathComponent.cs" t="Include" />
+              <e p="GameNewBoardIdComponent.cs" t="Include" />
               <e p="GameNextBoardIdComponent.cs" t="Include" />
               <e p="GamePathCreatorComponent.cs" t="Include" />
-              <e p="GamePathPositionComponent.cs" t="Include" />
               <e p="GamePathRotationComponent.cs" t="Include" />
               <e p="GamePositionComponent.cs" t="Include" />
-              <e p="GamePushBoardsComponent.cs" t="Include" />
+              <e p="GameRemoveBoardsComponent.cs" t="Include" />
               <e p="GameRotationComponent.cs" t="Include" />
               <e p="GameSyncTransformComponent.cs" t="Include" />
               <e p="GameTransformViewComponent.cs" t="Include" />
@@ -107,32 +121,29 @@
             <e p="Game" t="Include">
               <e p="AngularVelocityComponent.cs" t="Include" />
               <e p="AroundRotationComponent.cs" t="Include" />
+              <e p="AroundRotationEmitterComponent.cs" t="Include" />
               <e p="AssetComponent.cs" t="Include" />
               <e p="BallComponent.cs" t="Include" />
               <e p="BoardComponent.cs" t="Include" />
               <e p="BoardIdComponent.cs" t="Include" />
-              <e p="CameraComponent.cs" t="Include" />
+              <e p="BoardViewComponent.cs" t="Include" />
               <e p="CollisionComponent.cs" t="Include" />
               <e p="CommandBufferComponent.cs" t="Include" />
               <e p="CountBoardsComponent.cs" t="Include" />
-              <e p="DelayComponent.cs" t="Include" />
               <e p="DestroyedComponent.cs" t="Include" />
               <e p="DirectionComponent.cs" t="Include" />
               <e p="DirectPathDelayComponent.cs" t="Include" />
               <e p="FirstBoardIdComponent.cs" t="Include" />
               <e p="LastBoardIdComponent.cs" t="Include" />
               <e p="LinearVelocityComponent.cs" t="Include" />
+              <e p="LocalRotationComponent.cs" t="Include" />
               <e p="MonoViewComponent.cs" t="Include" />
-              <e p="MoveCompleteComponent.cs" t="Include" />
-              <e p="MovementDelayComponent.cs" t="Include" />
-              <e p="MoverComponent.cs" t="Include" />
-              <e p="MovingStepsOfPathComponent.cs" t="Include" />
+              <e p="NewBoardIdComponent.cs" t="Include" />
               <e p="NextBoardIdComponent.cs" t="Include" />
               <e p="PathCreatorComponent.cs" t="Include" />
-              <e p="PathPositionComponent.cs" t="Include" />
               <e p="PathRotationComponent.cs" t="Include" />
               <e p="PositionComponent.cs" t="Include" />
-              <e p="PushBoardsComponent.cs" t="Include" />
+              <e p="RemoveBoardsComponent.cs" t="Include" />
               <e p="RotationComponent.cs" t="Include" />
               <e p="SyncTransformComponent.cs" t="Include" />
               <e p="TransformViewComponent.cs" t="Include" />
@@ -156,9 +167,10 @@
           </e>
           <e p="GameController.cs" t="Include" />
           <e p="MonoViews" t="Include">
-            <e p="CollisionEmmiter.cs" t="Include" />
+            <e p="CollisionEmitter.cs" t="Include" />
+            <e p="MonoBallTransformView.cs" t="Include" />
+            <e p="MonoBoardView.cs" t="Include" />
             <e p="MonoGameView.cs" t="Include" />
-            <e p="MonoRigidBodyTransformView.cs" t="Include" />
             <e p="MonoTransformView.cs" t="Include" />
             <e p="MonoView.cs" t="Include" />
           </e>
@@ -176,15 +188,17 @@
           </e>
           <e p="Systems" t="Include">
             <e p="Game" t="Include">
+              <e p="AroundRotationSpawnSystem.cs" t="Include" />
               <e p="BallDirectionSystem.cs" t="Include" />
-              <e p="CameraSystem.cs" t="Include" />
               <e p="CommandExecutionSystem.cs" t="Include" />
               <e p="DestroyedSystem.cs" t="Include" />
               <e p="GameSystems.cs" t="Include" />
               <e p="InstantiateSystem.cs" t="Include" />
-              <e p="MoveSystem.cs" t="Include" />
+              <e p="LocalRotationUpdateSystem.cs" t="Include" />
               <e p="PathBuildingSystem.cs" t="Include" />
+              <e p="PathChainSystem.cs" t="Include" />
               <e p="PathControlSystem.cs" t="Include" />
+              <e p="PathRemoveNewBoardSystem.cs" t="Include" />
               <e p="PathRemoveSystem.cs" t="Include" />
               <e p="PathRotationSystem.cs" t="Include" />
               <e p="PositionUpdateSystem.cs" t="Include" />
@@ -207,6 +221,8 @@
             </e>
           </e>
           <e p="Views" t="Include">
+            <e p="IBoardView.cs" t="Include" />
+            <e p="IEntityLinker.cs" t="Include" />
             <e p="IMonoView.cs" t="Include" />
             <e p="ITransformView.cs" t="Include" />
             <e p="IView.cs" t="Include" />
@@ -233,6 +249,7 @@
           <e p="TestRunner.cs" t="Include" />
           <e p="Tests" t="Include">
             <e p="Game" t="Include">
+              <e p="describe_AroundRotationSpawnSystem.cs" t="Include" />
               <e p="describe_CommandExecutionSystem.cs" t="Include" />
               <e p="describe_DestroyedSystem.cs" t="Include" />
               <e p="describe_InstantiateSystem.cs" t="Include" />

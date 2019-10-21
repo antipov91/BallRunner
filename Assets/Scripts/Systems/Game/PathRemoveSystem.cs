@@ -14,29 +14,29 @@ namespace BallRunner.Systems
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.CountBoards);
+            return context.CreateCollector(GameMatcher.RemoveBoards);
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.hasCountBoards && entity.isPathCreator && entity.hasFirstBoardId;
+            return entity.hasRemoveBoards && entity.isPathCreator && entity.hasFirstBoardId;
         }
 
         protected override void Execute(List<GameEntity> entities)
         {
             foreach (var entity in entities)
             {
-                var deltaCount = entity.countBoards.value - contexts.meta.configsEntity.pathConfig.instance.MaxCountBoards;
-                if (deltaCount <= 0)
+                var removeCount = entity.removeBoards.value;
+                if (removeCount <= 0)
                     continue;
 
-                for (int i = 0; i < deltaCount; i++)
+                for (int i = 0; i < removeCount; i++)
                 {
                     var firstBoardEntity = contexts.game.GetEntityWithBoardId(entity.firstBoardId.value);
                     firstBoardEntity.isDestroyed = true;
                     entity.ReplaceFirstBoardId(firstBoardEntity.nextBoardId.value);
                 }
-                entity.ReplaceCountBoards(entity.countBoards.value - deltaCount);
+                entity.ReplaceCountBoards(entity.countBoards.value - removeCount);
             }
         }
     }

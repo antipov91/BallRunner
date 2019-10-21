@@ -20,5 +20,10 @@ namespace BallRunner.Views
         {
             transform.RotateAround(point, axis, angle);
         }
+
+        public void LocalRotate(Vector3 angles)
+        {
+            transform.Rotate(angles);
+        }
     }
 }

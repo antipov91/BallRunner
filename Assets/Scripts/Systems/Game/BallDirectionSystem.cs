@@ -1,65 +1,48 @@
-using System;
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
 namespace BallRunner.Systems
 {
-    public class BallDirectionSystem : IExecuteSystem
+    public class BallDirectionSystem : ReactiveSystem<GameEntity>
     {
         private readonly Contexts contexts;
-        private IGroup<GameEntity> entitiesGroup;
-
-        public BallDirectionSystem(Contexts contexts)
+        
+        public BallDirectionSystem(Contexts contexts) : base(contexts.game)
         {
             this.contexts = contexts;
-            entitiesGroup = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Ball, GameMatcher.Collision));
         }
-        
-        public void Execute()
+
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            foreach (var entity in entitiesGroup.GetEntities())
+            return context.CreateCollector(GameMatcher.Collision.Added());
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.isBall && entity.hasCollision && entity.collision.targetInstance.hasBoardView &&
+                   entity.collision.targetInstance.hasPosition;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach (var entity in entities)
             {
                 var collisionEntity = entity.collision.targetInstance;
-                if (collisionEntity.hasBoard == false || collisionEntity.hasRotation == false || collisionEntity.hasPosition == false)
-                    continue;
-                
-                var dif = new Vector2(entity.position.value.x - collisionEntity.position.value.x, entity.position.value.z - collisionEntity.position.value.z);
-                if (dif.magnitude <= 0.2f)
-                {
-                    var direction = GetAxis(collisionEntity);
-                    entity.ReplaceDirection(direction);
-                    entity.ReplaceRotation(Quaternion.LookRotation(direction, Vector3.up).eulerAngles);
-                }
+
+                var boarSize = contexts.meta.configsEntity.pathConfig.instance.BoardSize;
+                var endPoint = collisionEntity.position.value +
+                               collisionEntity.boardView.instance.GetDirection().normalized * boarSize / 2f;
+                var direction = new Vector3(endPoint.x - entity.position.value.x, 0, endPoint.z - entity.position.value.z);
+                entity.ReplaceDirection(direction.normalized);
 
                 if (contexts.game.pathCreatorEntity.firstBoardId.value != collisionEntity.boardId.value)
                 {
                     int count = collisionEntity.boardId.value - contexts.game.pathCreatorEntity.firstBoardId.value;
-                    contexts.game.pathCreatorEntity.ReplacePushBoards(count);
+                    contexts.game.pathCreatorEntity.ReplaceRemoveBoards(count);
                 }
-            }
-        }
-        
-        private Vector3 GetAxis(GameEntity boardEntity)
-        {
-            var boardType = boardEntity.board.value;
-            var rotation = boardEntity.rotation.value;
-            switch (boardType)
-            {
-                case BoardType.Forward:
-                    return Quaternion.Euler(rotation) * Vector3.forward;
-                case BoardType.Back:
-                    return Quaternion.Euler(rotation) * Vector3.back;
-                case BoardType.Right:
-                    return Quaternion.Euler(rotation) * Vector3.right;
-                case BoardType.Left:
-                    return Quaternion.Euler(rotation) * Vector3.left;
-                case BoardType.Up:
-                    return Quaternion.Euler(rotation) * Vector3.up;
-                case BoardType.Down:
-                    return Quaternion.Euler(rotation) * Vector3.down;
-                default:
-                    throw new NotImplementedException();
+                
+                entity.RemoveCollision();
             }
         }
     }

@@ -16,10 +16,7 @@ namespace Tests.Game
             {
                 contexts = new Contexts();
                 pathRemoveSystem = new PathRemoveSystem(contexts);
-                
-                var configsInitializationSystem = new ConfigsInitializationSystem(contexts);
-                configsInitializationSystem.Initialize();
-                
+
                 contexts.game.isPathCreator = true;
                 pathCreatorEntity = contexts.game.pathCreatorEntity;
             };
@@ -41,8 +38,8 @@ namespace Tests.Game
                     
                     lastBoardEntity = contexts.game.CreateEntity();
                     lastBoardEntity.ReplaceBoardId(1);
-
-                    contexts.meta.configsEntity.pathConfig.instance.MaxCountBoards = 1;
+                        
+                    pathCreatorEntity.ReplaceRemoveBoards(1);
                     pathRemoveSystem.Execute();
                 };
                 

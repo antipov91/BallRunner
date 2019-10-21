@@ -2,11 +2,10 @@ namespace BallRunner.Services
 {
     public class WoodBoardFactory : IBoardFactory
     {
-        public GameEntity CreateBoard(Contexts contexts, BoardType type)
+        public GameEntity CreateBoard(Contexts contexts)
         {
             var entity = contexts.game.CreateEntity();
             entity.AddAsset("Prefabs/Cube");
-            entity.AddBoard(type);
             return entity;
         }
     }

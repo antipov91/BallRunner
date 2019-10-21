@@ -44,6 +44,10 @@ namespace BallRunner.Systems
             var transformView = monoView.GetViewComponent<ITransformView>();
             if (!ReferenceEquals(transformView, null))
                 entity.ReplaceTransformView(transformView);
+
+            var boardView = monoView.GetViewComponent<IBoardView>();
+            if (!ReferenceEquals(boardView, null))
+                entity.ReplaceBoardView(boardView);
         }
     }
 }

@@ -7,5 +7,6 @@ namespace BallRunner.Views
         Vector3 Position { get; set; }
         Vector3 Rotation { get; set; }
         void RotateAround(Vector3 point, Vector3 axis, float angle);
+        void LocalRotate(Vector3 angles);
     }
 }

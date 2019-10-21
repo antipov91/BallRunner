@@ -10,67 +10,65 @@ public static class GameComponentsLookup {
 
     public const int AngularVelocity = 0;
     public const int AroundRotation = 1;
-    public const int Asset = 2;
-    public const int Ball = 3;
-    public const int Board = 4;
-    public const int BoardId = 5;
-    public const int Camera = 6;
-    public const int Collision = 7;
-    public const int CommandBuffer = 8;
-    public const int CountBoards = 9;
-    public const int Delay = 10;
+    public const int AroundRotationEmitter = 2;
+    public const int Asset = 3;
+    public const int Ball = 4;
+    public const int Board = 5;
+    public const int BoardId = 6;
+    public const int BoardView = 7;
+    public const int Collision = 8;
+    public const int CommandBuffer = 9;
+    public const int CountBoards = 10;
     public const int Destroyed = 11;
     public const int Direction = 12;
-    public const int DirectPathDelay = 13;
-    public const int FirstBoardId = 14;
-    public const int LastBoardId = 15;
-    public const int LinearVelocity = 16;
-    public const int MonoView = 17;
-    public const int MoveComplete = 18;
-    public const int MovementDelay = 19;
-    public const int Mover = 20;
-    public const int MovingStepsOfPath = 21;
+    public const int DirectionListener = 13;
+    public const int DirectPathDelay = 14;
+    public const int FirstBoardId = 15;
+    public const int LastBoardId = 16;
+    public const int LinearVelocity = 17;
+    public const int LinearVelocityListener = 18;
+    public const int LocalRotation = 19;
+    public const int MonoView = 20;
+    public const int NewBoardId = 21;
     public const int NextBoardId = 22;
     public const int PathCreator = 23;
-    public const int PathPosition = 24;
-    public const int PathRotation = 25;
-    public const int Position = 26;
-    public const int PushBoards = 27;
-    public const int Rotation = 28;
-    public const int SyncTransform = 29;
-    public const int TransformView = 30;
+    public const int PathRotation = 24;
+    public const int Position = 25;
+    public const int RemoveBoards = 26;
+    public const int Rotation = 27;
+    public const int SyncTransform = 28;
+    public const int TransformView = 29;
 
-    public const int TotalComponents = 31;
+    public const int TotalComponents = 30;
 
     public static readonly string[] componentNames = {
         "AngularVelocity",
         "AroundRotation",
+        "AroundRotationEmitter",
         "Asset",
         "Ball",
         "Board",
         "BoardId",
-        "Camera",
+        "BoardView",
         "Collision",
         "CommandBuffer",
         "CountBoards",
-        "Delay",
         "Destroyed",
         "Direction",
+        "DirectionListener",
         "DirectPathDelay",
         "FirstBoardId",
         "LastBoardId",
         "LinearVelocity",
+        "LinearVelocityListener",
+        "LocalRotation",
         "MonoView",
-        "MoveComplete",
-        "MovementDelay",
-        "Mover",
-        "MovingStepsOfPath",
+        "NewBoardId",
         "NextBoardId",
         "PathCreator",
-        "PathPosition",
         "PathRotation",
         "Position",
-        "PushBoards",
+        "RemoveBoards",
         "Rotation",
         "SyncTransform",
         "TransformView"
@@ -79,32 +77,31 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(AngularVelocityComponent),
         typeof(AroundRotationComponent),
+        typeof(AroundRotationEmitterComponent),
         typeof(AssetComponent),
         typeof(BallComponent),
         typeof(BoardComponent),
         typeof(BoardIdComponent),
-        typeof(CameraComponent),
+        typeof(BoardViewComponent),
         typeof(CollisionComponent),
         typeof(CommandBufferComponent),
         typeof(CountBoardsComponent),
-        typeof(DelayComponent),
         typeof(DestroyedComponent),
         typeof(DirectionComponent),
+        typeof(DirectionListenerComponent),
         typeof(DirectPathDelayComponent),
         typeof(FirstBoardIdComponent),
         typeof(LastBoardIdComponent),
         typeof(LinearVelocityComponent),
+        typeof(LinearVelocityListenerComponent),
+        typeof(LocalRotationComponent),
         typeof(MonoViewComponent),
-        typeof(MoveCompleteComponent),
-        typeof(MovementDelayComponent),
-        typeof(MoverComponent),
-        typeof(MovingStepsOfPathComponent),
+        typeof(NewBoardIdComponent),
         typeof(NextBoardIdComponent),
         typeof(PathCreatorComponent),
-        typeof(PathPositionComponent),
         typeof(PathRotationComponent),
         typeof(PositionComponent),
-        typeof(PushBoardsComponent),
+        typeof(RemoveBoardsComponent),
         typeof(RotationComponent),
         typeof(SyncTransformComponent),
         typeof(TransformViewComponent)

@@ -1,5 +1,4 @@
 using Entitas;
-using UnityEngine;
 
 namespace BallRunner.Systems
 {
@@ -16,8 +15,15 @@ namespace BallRunner.Systems
         {
             foreach (var entity in entitiesGroup.GetEntities())
             {
-                entity.ReplacePosition(entity.transformView.instance.Position);
-                entity.ReplaceRotation(entity.transformView.instance.Rotation);
+                if (entity.hasPosition)
+                    entity.position.value = entity.transformView.instance.Position;
+                else
+                    entity.ReplacePosition(entity.transformView.instance.Position);
+                
+                if (entity.hasRotation)
+                    entity.rotation.value = entity.transformView.instance.Rotation;
+                else
+                    entity.ReplaceRotation(entity.transformView.instance.Rotation);
             }
         }
     }

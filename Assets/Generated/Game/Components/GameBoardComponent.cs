@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public BoardComponent board { get { return (BoardComponent)GetComponent(GameComponentsLookup.Board); } }
-    public bool hasBoard { get { return HasComponent(GameComponentsLookup.Board); } }
+    static readonly BoardComponent boardComponent = new BoardComponent();
 
-    public void AddBoard(BoardType newValue) {
-        var index = GameComponentsLookup.Board;
-        var component = (BoardComponent)CreateComponent(index, typeof(BoardComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+    public bool isBoard {
+        get { return HasComponent(GameComponentsLookup.Board); }
+        set {
+            if (value != isBoard) {
+                var index = GameComponentsLookup.Board;
+                if (value) {
+                    var componentPool = GetComponentPool(index);
+                    var component = componentPool.Count > 0
+                            ? componentPool.Pop()
+                            : boardComponent;
 
-    public void ReplaceBoard(BoardType newValue) {
-        var index = GameComponentsLookup.Board;
-        var component = (BoardComponent)CreateComponent(index, typeof(BoardComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveBoard() {
-        RemoveComponent(GameComponentsLookup.Board);
+                    AddComponent(index, component);
+                } else {
+                    RemoveComponent(index);
+                }
+            }
+        }
     }
 }
 

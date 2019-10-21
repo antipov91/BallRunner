@@ -1,128 +1,86 @@
-using System;
-using System.Collections.Generic;
 using BallRunner.Services;
+using DesperateDevs.Utils;
 using Entitas;
 using UnityEngine;
 using Random = System.Random;
 
-#region BoardType
-public enum BoardType
-{
-    Forward = 0,
-    Up = 1,
-    Down = 2,
-    Back = 3,
-    Left = 4,
-    Right = 5
-}
-#endregion
-
 namespace BallRunner.Systems
 {
-    public class PathBuildingSystem : ReactiveSystem<GameEntity>
+    public class PathBuildingSystem : IExecuteSystem
     {
         private readonly Contexts contexts;
         private readonly IBoardFactory boardFactory;
+        private IGroup<GameEntity> entitiesGroup;
 
-        private readonly BoardType[][] possibleBoards;
+        private readonly Vector3[] possibleTurns;
         private Random rand;
-        
-        public PathBuildingSystem(Contexts contexts, IBoardFactory boardFactory) : base(contexts.game)
+
+        public PathBuildingSystem(Contexts contexts, IBoardFactory boardFactory)
         {
             this.contexts = contexts;
             this.boardFactory = boardFactory;
+            entitiesGroup = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.PathCreator));
             
             rand = new Random();
-            
-            possibleBoards = new BoardType[6][];
-            possibleBoards[0] = new[] {BoardType.Forward, BoardType.Up, BoardType.Down, BoardType.Left, BoardType.Right};
-            possibleBoards[1] = new[] {BoardType.Up, BoardType.Forward, BoardType.Back, BoardType.Left, BoardType.Right};
-            possibleBoards[2] = new[] {BoardType.Down, BoardType.Forward, BoardType.Back, BoardType.Left, BoardType.Right};
-            possibleBoards[3] = new[] {BoardType.Back, BoardType.Up, BoardType.Down, BoardType.Left, BoardType.Down};
-            possibleBoards[4] = new[] {BoardType.Left, BoardType.Forward, BoardType.Up, BoardType.Down, BoardType.Back};
-            possibleBoards[5] = new[] {BoardType.Right, BoardType.Forward, BoardType.Up, BoardType.Down, BoardType.Back};
+            possibleTurns = new[] {90 * Vector3.left, 90 * Vector3.right, 90 * Vector3.up, 90 * Vector3.down};
         }
-
-        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        
+        public void Execute()
         {
-            return context.CreateCollector(GameMatcher.PushBoards.Added());
-        }
-
-        protected override bool Filter(GameEntity entity)
-        {
-            return entity.hasPushBoards && entity.isPathCreator && entity.pushBoards.value > 0;
-        }
-
-        protected override void Execute(List<GameEntity> entities)
-        {
-            foreach (var entity in entities)
+            foreach (var entity in entitiesGroup.GetEntities())
             {
-                for (int i = 0; i < entity.pushBoards.value; i++)
+                if (entity.hasCountBoards && entity.countBoards.value >= contexts.meta.configsEntity.pathConfig.instance.MaxCountBoards)
+                    continue;
+
+                if (entity.hasLastBoardId)
                 {
-                    var nextBoardType = GetNextBoardType(entity);
-                    var nextPosition = GetNextBoardPosition(entity);
-                    var nextRotation = GetNextBoardRotation(entity);
-                    UpdateDirectPathDelay(entity);
-
-                    var boardEntity = boardFactory.CreateBoard(contexts, nextBoardType);
-                    boardEntity.ReplacePosition(nextPosition);
-                    boardEntity.ReplaceRotation(nextRotation);
-                    boardEntity.isSyncTransform = true;
-
-                    UpdateBoardChain(entity, boardEntity);
+                    var lastBoardEntity = contexts.game.GetEntityWithBoardId(entity.lastBoardId.value);
+                    if (lastBoardEntity.hasBoardView == false || lastBoardEntity.hasAroundRotation)
+                        continue;
                 }
-
-                var count = entity.hasCountBoards ? entity.countBoards.value : 0;
-                entity.ReplaceCountBoards(count + entity.pushBoards.value);
-                entity.RemovePushBoards();
+                
+                var position = GetNextBoardPosition(entity);
+                var rotation = GetNextBoardRotation(entity);
+                var turn = GetNextTurn(entity);
+                var id = GetNextBoardId(entity);
+                UpdateDirectPathDelay(entity);
+                    
+                var boardEntity = boardFactory.CreateBoard(contexts);
+                boardEntity.isBoard = true;
+                boardEntity.ReplacePosition(position);
+                boardEntity.ReplaceRotation(rotation);
+                boardEntity.ReplaceLocalRotation(turn);
+                boardEntity.ReplaceBoardId(id);
+                boardEntity.isSyncTransform = true;
+                
+                entity.ReplaceNewBoardId(boardEntity.boardId.value);
             }
         }
-
-        private BoardType GetNextBoardType(GameEntity entity)
+        
+        private Vector3 GetNextTurn(GameEntity entity)
         {
-            if (entity.hasLastBoardId == false)
-                return BoardType.Forward;
+            if (entity.hasLastBoardId == false || entity.hasDirectPathDelay)
+                return Vector3.zero;
 
-            var currentBoardType = contexts.game.GetEntityWithBoardId(entity.lastBoardId.value).board.value;
-            if (entity.hasDirectPathDelay)
-                return currentBoardType;
-            return possibleBoards[(int) currentBoardType][rand.Next(5)];
+            return possibleTurns[rand.Next(4)];
         }
 
         private Vector3 GetNextBoardPosition(GameEntity entity)
         {
-            var currentPosition = Vector3.zero;
-            var currentRotation = Vector3.zero;
-            var currentBoardType = BoardType.Forward;
-
+            var direction = Vector3.zero;
+            var position = Vector3.zero;
+            
             if (entity.hasLastBoardId)
             {
                 var lastBoardEntity = contexts.game.GetEntityWithBoardId(entity.lastBoardId.value);
-                currentPosition = lastBoardEntity.position.value;
-                currentRotation = lastBoardEntity.rotation.value;
-                currentBoardType = lastBoardEntity.board.value;
+                position = lastBoardEntity.position.value;
+                direction = lastBoardEntity.boardView.instance.GetDirection();
             }
-            
-            var boardSize = contexts.meta.configsEntity.pathConfig.instance.BoardSize;
-            switch (currentBoardType)
-            {
-                case BoardType.Back:
-                    return currentPosition + Quaternion.Euler(currentRotation) * Vector3.back * boardSize;
-                case BoardType.Down:
-                    return currentPosition + Quaternion.Euler(currentRotation) * Vector3.down * boardSize;
-                case BoardType.Forward:
-                    return currentPosition + Quaternion.Euler(currentRotation) * Vector3.forward * boardSize;
-                case BoardType.Left:
-                    return currentPosition + Quaternion.Euler(currentRotation) * Vector3.left * boardSize;
-                case BoardType.Right:
-                    return currentPosition + Quaternion.Euler(currentRotation) * Vector3.right * boardSize;
-                case BoardType.Up:
-                    return currentPosition + Quaternion.Euler(currentRotation) * Vector3.up * boardSize;
-                default:
-                    throw new NotImplementedException();
-            }
-        }
 
+            var boardSize = contexts.meta.configsEntity.pathConfig.instance.BoardSize;
+            return position + direction.normalized * boardSize;
+        }
+        
         private Vector3 GetNextBoardRotation(GameEntity entity)
         {
             if (entity.hasLastBoardId)
@@ -132,7 +90,16 @@ namespace BallRunner.Systems
             }
             return Vector3.zero;
         }
-        
+
+        private int GetNextBoardId(GameEntity entity)
+        {
+            if (entity.hasLastBoardId == false)
+                return 0;
+            
+            var lastBoardEntity = contexts.game.GetEntityWithBoardId(entity.lastBoardId.value);
+            return lastBoardEntity.boardId.value + 1;
+        }
+
         private void UpdateDirectPathDelay(GameEntity entity)
         {
             if (entity.hasDirectPathDelay == false)
@@ -145,21 +112,6 @@ namespace BallRunner.Systems
                 if (entity.directPathDelay.value <= 0)
                     entity.RemoveDirectPathDelay();
             }
-        }
-
-        private void UpdateBoardChain(GameEntity entity, GameEntity boardEntity)
-        {
-            if (entity.hasLastBoardId == false)
-                boardEntity.ReplaceBoardId(0);
-            else
-            {
-                var lastBoardEntity = contexts.game.GetEntityWithBoardId(entity.lastBoardId.value);
-                boardEntity.ReplaceBoardId(lastBoardEntity.boardId.value + 1);
-                lastBoardEntity.ReplaceNextBoardId(boardEntity.boardId.value);
-            }
-            if (entity.hasFirstBoardId == false)
-                entity.ReplaceFirstBoardId(boardEntity.boardId.value);
-            entity.ReplaceLastBoardId(boardEntity.boardId.value);
         }
     }
 }
